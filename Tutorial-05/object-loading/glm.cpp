@@ -19,6 +19,8 @@
 #include <assert.h>
 #include "glm.h"
 
+// https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-3-c4996?f1url=%3FappId%3DDev16IDEF1%26l%3DEN-US%26k%3Dk(C4996)%26rd%3Dtrue&view=msvc-160
+#pragma warning(disable : 4996)
 
 #define T(x) (model->triangles[(x)])
 
@@ -442,7 +444,7 @@ glmFirstPass(GLMmodel* model, FILE* file)
     char buf[128];
     
     /* make a default group */
-    group = glmAddGroup(model, "default");
+    group = glmAddGroup(model, (char *)"default");
     
     numvertices = numnormals = numtexcoords = numtriangles = 0;
     while(fscanf(file, "%s", buf) != EOF) {
